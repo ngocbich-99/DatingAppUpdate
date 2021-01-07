@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ReplaySubject } from 'rxjs';
 import { map} from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { User } from '../_models/user';
 
 // This means that this service can be injected into 
@@ -11,7 +12,7 @@ import { User } from '../_models/user';
 })
 export class AccountService {
   // This is going to be used to make requests to our API.
-  baseUrl = "https://localhost:5001/api/";
+  baseUrl = environment.apiUrl;
   private currentUserSource = new ReplaySubject<User>(1);
   currentUsers$ = this.currentUserSource.asObservable();
 
